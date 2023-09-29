@@ -1,4 +1,0 @@
-TODO
-* Sätt upp infrastruktur.
-* Fixa backend.
-* Fixa frontend.
