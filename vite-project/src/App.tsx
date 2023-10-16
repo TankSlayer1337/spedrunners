@@ -8,7 +8,10 @@ const App = () => {
   return (
     <Authenticator socialProviders={["google"]} hideSignUp={true}>
       {({ signOut, user }) => (
-        <Movies user={user!}></Movies>
+        <>
+          <button onClick={signOut}>Logga ut</button>
+          <Movies user={user!}></Movies>
+        </>
       )}
     </Authenticator>
   )
