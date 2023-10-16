@@ -4,7 +4,7 @@ import { ApiUrlProvider } from "../api-url-provider";
 import { AddMovieRequest } from "./add-movie-request";
 import Spinner from "../spinner/Spinner";
 
-const AddMovie = ({ user }: { user: AmplifyUser }) => {
+const AddMovie = ({ user, onAdd }: { user: AmplifyUser, onAdd: Function }) => {
   const defaultUserNames: string[] = ['André', 'Elliot', 'John', 'Rodrigue'];
   const [form, setForm] = useState<AddMovieRequest>({
     title: '',
@@ -48,7 +48,9 @@ const AddMovie = ({ user }: { user: AmplifyUser }) => {
       console.error('Error: ', error);
     }
 
+    setForm({title: '', pickedBy: defaultUserNames[0], imdbLink: ''});
     setAwaitingResponse(false);
+    onAdd();
   }
 
   const pickedByOptions = defaultUserNames.map(username =>
@@ -60,18 +62,20 @@ const AddMovie = ({ user }: { user: AmplifyUser }) => {
       <h4>Lägg till film</h4>
       <form onSubmit={addMovie}>
         <label htmlFor="pickedBy">Vald av: </label>
-        <select name="pickedBy" id="pickedBy" onChange={handleSelectChange}>
+        <select value={form.pickedBy} name="pickedBy" id="pickedBy" onChange={handleSelectChange}>
           {pickedByOptions}
         </select>
         <br></br>
         <label htmlFor="title">Titel: </label>
         <input
+          value={form.title}
           id="title"
           type="text"
           name="title"
           onChange={handleChange}></input><br></br>
         <label htmlFor="imdbLink">IMDb-länk: </label>
         <input
+          value={form.imdbLink}
           id="imdbLink"
           type="text"
           name="imdbLink"
