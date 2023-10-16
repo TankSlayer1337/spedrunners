@@ -1,6 +1,6 @@
 import { MovieEntry } from "./movie-entry";
 
-const MovieList = ({ movies }: { movies: MovieEntry[] }) => {
+const MovieList = ({ movies, onDelete }: { movies: MovieEntry[], onDelete: Function }) => {
 
   const compare = (a: MovieEntry, b: MovieEntry): number => {
     if (a.created > b.created) {
@@ -17,6 +17,7 @@ const MovieList = ({ movies }: { movies: MovieEntry[] }) => {
       <h3>{movie.title}</h3>
       <p>Vald av {movie.pickedBy}</p>
       <p>Lades till {movie.created}</p>
+      <button onClick={() => onDelete(movie.movieId)}>Delete</button>
     </li>
   );
 
