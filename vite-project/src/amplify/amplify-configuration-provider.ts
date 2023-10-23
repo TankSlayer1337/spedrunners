@@ -13,21 +13,29 @@ export function configureAmplify(): void {
     )
   );
 
+  let userPoolId: string;
+  let userPoolWebClientId: string;
   let redirect: string;
   let cognitoDomain: string;
   let apiScope: string;
   if (isLocalhost) {
+    userPoolId = 'eu-north-1_tGJd16X8K';
+    userPoolWebClientId = '1nlukckjtfc55b62j4enf4visk';
     redirect = 'http://localhost:5173';
     cognitoDomain = 'spedrunners-dev.auth.eu-north-1.amazoncognito.com';
     apiScope = 'https://dev.spedrunners.api.cloudchaotic.com/*';
   } else {
+    userPoolId = 'eu-north-1_h2PE8AZIu';
+    userPoolWebClientId = '2c55tfkc2o2dr510f1df1irnae';
     redirect = 'https://spedrunners.cloudchaotic.com';
     cognitoDomain = 'spedrunners-prod.auth.eu-north-1.amazoncognito.com';
-    apiScope = 'https://spedrunners.api.cloudchaotic.com/*';
+    apiScope = 'https://prod.spedrunners.api.cloudchaotic.com/*';
   }
 
   const updatedAwsConfig = {
     ...configuration.Auth,
+    userPoolId: userPoolId,
+    userPoolWebClientId: userPoolWebClientId,
     cookieStorage: {
       ...configuration.Auth.cookieStorage,
       // TODO: this might need to get updated.

@@ -2,7 +2,7 @@ export class ApiUrlProvider {
   private static apiUrl: string;
 
   public static getApiUrl(): string {
-    return ApiUrlProvider.apiUrl ?? this.isLocalHost() ? 'https://dev.spedrunners.api.cloudchaotic.com' : 'https://spedrunners.api.cloudchaotic.com';
+    return ApiUrlProvider.apiUrl ?? this.isLocalHost() ? 'https://dev.spedrunners.api.cloudchaotic.com' : 'https://prod.spedrunners.api.cloudchaotic.com';
   }
 
   static isLocalHost(): boolean {

@@ -10,12 +10,6 @@ const configuration = {
       // Required only if it's different from Amazon Cognito Region
       // identityPoolRegion: "XX-XXXX-X",
   
-      // OPTIONAL - Amazon Cognito User Pool ID
-      userPoolId: "eu-north-1_tGJd16X8K",
-  
-      // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
-      userPoolWebClientId: "1nlukckjtfc55b62j4enf4visk",
-  
       // OPTIONAL - Enforce user authentication prior to accessing AWS resources or not
       mandatorySignIn: false,
   
