@@ -35,6 +35,7 @@ const Movies = ({ user }: { user: AmplifyUser }) => {
     setAwaitingResponse(false);
   }
 
+  // Move this method into EditMovie, and just pass fetchMovies() instead?
   const deleteMovie = async (movieId: string) => {
     try {
       const url = ApiUrlProvider.getApiUrl() + '/movies/' + movieId;
