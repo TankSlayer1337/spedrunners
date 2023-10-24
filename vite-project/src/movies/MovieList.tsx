@@ -1,7 +1,8 @@
+import { AmplifyUser } from "@aws-amplify/ui";
 import { MovieEntry } from "./movie-entry";
 import MovieListItem from "./MovieListItem";
 
-const MovieList = ({ movies, onDelete }: { movies: MovieEntry[], onDelete: Function }) => {
+const MovieList = ({ user, movies, onEdit }: { user: AmplifyUser, movies: MovieEntry[], onEdit: Function }) => {
   const compareCreated = (a: MovieEntry, b: MovieEntry): number => {
     if (a.created > b.created) {
       return -1;
@@ -14,7 +15,7 @@ const MovieList = ({ movies, onDelete }: { movies: MovieEntry[], onDelete: Funct
 
   const movieItems = movies.sort(compareCreated).map(movie =>
     <li key={movie.movieId}>
-      <MovieListItem entry={movie} onDelete={onDelete}></MovieListItem>
+      <MovieListItem user={user} entry={movie} onEdit={onEdit}></MovieListItem>
     </li>
   );
 

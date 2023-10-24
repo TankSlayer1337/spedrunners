@@ -35,28 +35,6 @@ const Movies = ({ user }: { user: AmplifyUser }) => {
     setAwaitingResponse(false);
   }
 
-  // Move this method into EditMovie, and just pass fetchMovies() instead?
-  const deleteMovie = async (movieId: string) => {
-    try {
-      const url = ApiUrlProvider.getApiUrl() + '/movies/' + movieId;
-      const accessToken = user.getSignInUserSession()?.getAccessToken().getJwtToken();
-      const response = await fetch(url, {
-        method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${accessToken}`
-        }
-      });
-
-      if (!response.ok) {
-        throw new Error('Movie deletion was unsuccessful.');
-      }
-
-      fetchMovies();
-    } catch (error) {
-      console.error('Error: ', error);
-    }
-  }
-
   useEffect(() => {
     fetchMovies();
   }, []);
@@ -65,7 +43,7 @@ const Movies = ({ user }: { user: AmplifyUser }) => {
     <>
       <AddMovie user={user!} onAdd={fetchMovies}></AddMovie>
       {awaitingResponse ? <Spinner></Spinner> :
-        <MovieList movies={movies} onDelete={deleteMovie}></MovieList>
+        <MovieList user={user} movies={movies} onEdit={fetchMovies}></MovieList>
       }
     </>
   )
