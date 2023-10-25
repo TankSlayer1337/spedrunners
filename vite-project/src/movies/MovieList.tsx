@@ -1,10 +1,9 @@
+import { AmplifyUser } from "@aws-amplify/ui";
 import { MovieEntry } from "./movie-entry";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
+import MovieListItem from "./MovieListItem";
 
-const MovieList = ({ movies, onDelete }: { movies: MovieEntry[], onDelete: Function }) => {
-
-  const compare = (a: MovieEntry, b: MovieEntry): number => {
+const MovieList = ({ user, movies, onEdit }: { user: AmplifyUser, movies: MovieEntry[], onEdit: Function }) => {
+  const compareCreated = (a: MovieEntry, b: MovieEntry): number => {
     if (a.created > b.created) {
       return -1;
     }
@@ -14,13 +13,9 @@ const MovieList = ({ movies, onDelete }: { movies: MovieEntry[], onDelete: Funct
     return 0;
   }
 
-  const movieItems = movies.sort(compare).map(movie =>
+  const movieItems = movies.sort(compareCreated).map(movie =>
     <li key={movie.movieId}>
-      <h3>{movie.title}</h3>
-      <p>Vald av {movie.pickedBy}</p>
-      {movie.imdbLink && <a href={movie.imdbLink} target="_blank">IMDb <FontAwesomeIcon icon={faArrowUpRightFromSquare}></FontAwesomeIcon></a>}
-      <p>Lades till {movie.created}</p>
-      <button onClick={() => onDelete(movie.movieId)}>Delete</button>
+      <MovieListItem user={user} entry={movie} onEdit={onEdit}></MovieListItem>
     </li>
   );
 
