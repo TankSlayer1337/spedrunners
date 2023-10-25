@@ -1,5 +1,5 @@
 import { AmplifyUser } from "@aws-amplify/ui";
-import { MovieEntry } from "./movie-entry";
+import { MovieEntry } from "../interfaces/movie-entry";
 import DisplayMovie from "./DisplayMovie";
 import { useState } from "react";
 import EditMovie from "./EditMovie";

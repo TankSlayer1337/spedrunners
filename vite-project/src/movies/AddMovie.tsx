@@ -1,7 +1,7 @@
 import { AmplifyUser } from "@aws-amplify/ui";
 import { useState } from "react";
 import { ApiUrlProvider } from "../api-url-provider";
-import { AddMovieRequest } from "./add-movie-request";
+import { AddMovieRequest } from "./interfaces/add-movie-request";
 import Spinner from "../spinner/Spinner";
 import MovieForm from "./MovieForm";
 

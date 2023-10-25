@@ -1,5 +1,5 @@
 import { AmplifyUser } from "@aws-amplify/ui";
-import { MovieEntry } from "./movie-entry";
+import { MovieEntry } from "../interfaces/movie-entry";
 import MovieListItem from "./MovieListItem";
 
 const MovieList = ({ user, movies, onEdit }: { user: AmplifyUser, movies: MovieEntry[], onEdit: Function }) => {

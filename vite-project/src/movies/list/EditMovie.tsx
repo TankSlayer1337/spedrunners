@@ -1,12 +1,12 @@
 import { AmplifyUser } from "@aws-amplify/ui";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { MovieEntry } from "./movie-entry";
+import { MovieEntry } from "../interfaces/movie-entry";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { UpdateMovieRequest } from "./update-movie-request";
+import { UpdateMovieRequest } from "../interfaces/update-movie-request";
 import { useState } from "react";
-import { ApiUrlProvider } from "../api-url-provider";
-import MovieForm from "./MovieForm";
-import Spinner from "../spinner/Spinner";
+import { ApiUrlProvider } from "../../api-url-provider";
+import MovieForm from "../MovieForm";
+import Spinner from "../../spinner/Spinner";
 
 const EditMovie = ({ user, movie, onEdit, setDisplayEdit }: { user: AmplifyUser, movie: MovieEntry, onEdit: Function, setDisplayEdit: Function }) => {
   const [request, setRequest] = useState<UpdateMovieRequest>({
@@ -18,6 +18,7 @@ const EditMovie = ({ user, movie, onEdit, setDisplayEdit }: { user: AmplifyUser,
   const [awaitingResponse, setAwaitingResponse] = useState<boolean>(false);
 
   const deleteMovie = async () => {
+    setAwaitingResponse(true);
     try {
       const url = ApiUrlProvider.getApiUrl() + '/movies/' + movie.movieId;
       const accessToken = user.getSignInUserSession()?.getAccessToken().getJwtToken();

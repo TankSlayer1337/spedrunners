@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { MovieEntry } from "./movie-entry";
+import { MovieEntry } from "../interfaces/movie-entry";
 import { faArrowUpRightFromSquare, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 const DisplayMovie = ({ entry, setDisplayEdit }: { entry: MovieEntry, setDisplayEdit: Function }) => {

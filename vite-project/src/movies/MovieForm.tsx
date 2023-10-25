@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react";
-import { AddMovieRequest } from "./add-movie-request";
+import { AddMovieRequest } from "./interfaces/add-movie-request";
 
 const MovieForm = <RequestType extends AddMovieRequest,>({ request, setRequest }: { request: RequestType, setRequest: Function }) => {
   const defaultUserNames: string[] = ['André', 'Elliot', 'John', 'Rodrigue'];

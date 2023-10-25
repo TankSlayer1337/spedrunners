@@ -1,10 +1,10 @@
 import { AmplifyUser } from "@aws-amplify/ui";
 import { useEffect, useState } from "react";
-import { MovieEntry } from "./movie-entry";
+import { MovieEntry } from "./interfaces/movie-entry";
 import { ApiUrlProvider } from "../api-url-provider";
 import Spinner from "../spinner/Spinner";
 import AddMovie from "./AddMovie";
-import MovieList from "./MovieList";
+import MovieList from "./list/MovieList";
 
 const Movies = ({ user }: { user: AmplifyUser }) => {
   const [movies, setMovies] = useState<MovieEntry[]>([]);
