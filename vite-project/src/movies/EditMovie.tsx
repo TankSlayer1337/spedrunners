@@ -67,7 +67,7 @@ const EditMovie = ({ user, movie, onEdit, setDisplayEdit }: { user: AmplifyUser,
       <MovieForm request={request} setRequest={setRequest}></MovieForm>
       {awaitingResponse ? <Spinner></Spinner> :
       <>
-        <button onClick={() => updateMovie()}>Update</button>
+        <button onClick={() => updateMovie()}>Save Changes</button>
         <button onClick={() => deleteMovie()}>Delete <FontAwesomeIcon icon={faTrash} /></button>
         <button onClick={() => setDisplayEdit(false)}>Cancel</button>
       </>}
